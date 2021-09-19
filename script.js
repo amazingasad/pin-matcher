@@ -14,7 +14,7 @@ buttons.map( button => {
                 pinInputField.innerText = "";
                 break;
             case "←":
-                pinInputField.value = pinInputField.innerText.slice(0, -1);
+                pinInputField.innerText = pinInputField.innerText.slice(0, -1);
                 break;
             default:
                 pinInputField.innerText += e.target.innerText;
@@ -28,14 +28,14 @@ let tryLeft = parseInt(document.getElementById("try-left").innerText);
 let number1 = generatePinField.innerText;
 let number2 = pinInputField.innerText;
 submitButton.addEventListener("click", function(){
-    if(number1 == number2){
+    if(generatePinField.innerText == pinInputField.innerText){
         success.style.display = "block";
         alert("Pin matched");
-        console.log(number1);
-        console.log(number2);
+        failed.style.display = "none";
     }
     else{
         failed.style.display = "block";
+        success.style.display = "none";
         tryLeft = tryLeft -1;
         document.getElementById("try-left").innerText = tryLeft;
         if(tryLeft < 0){
